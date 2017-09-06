@@ -8,6 +8,11 @@
 
   You may *not* use this code for any commercial project.
   =====================================================================*/
+
+// ***
+// *** Port to GNU g++ by Maurizio Palesi <maurizio.palesi@dieei.unict.it>
+// ***
+
 #ifndef __SIMPLEWIN2D_H__
 #define __SIMPLEWIN2D_H__
 
@@ -35,13 +40,10 @@ inline unsigned long RGB(float r, float g, float b)
 class bitmapWindow : public Graphics2d 
 {
 public:
-  bitmapWindow(int x, int y, int width, int height /* MAU: , HINSTANCE currentInstance */); // Constructor
+  bitmapWindow(int x, int y, int width, int height); // Constructor
   ~bitmapWindow(); // Destructor
-  //MAU:  static int getNumberOfBitmapWindows(); // Returns static int below
   void setPixel(int x, int y, unsigned long color); // Set Pixel data in our pointer to the specified color
-  // MAU:  void drawLineInt(int x1, int y1, int x2, int y2, unsigned long color); // Draw a line from x1,y1 to x2,y2 in the specified color
   void erase(unsigned long color); // Passes the erase request to the drawingSurface
-  //MAU: void flipIntoView(); // Copies window pixels from memory pointer to screen.
 
   int saveBMP(char *fname);
 
@@ -54,7 +56,6 @@ public:
   virtual void clear();
 
   virtual void startDrawing();
-  // MAU:  virtual void finishDrawing();
 
   virtual int getWidth() const;
   virtual int getHeight() const;
@@ -107,22 +108,13 @@ public:
   ~drawingSurface(); // Destructor
     
   inline void setPixel(int x, int y, unsigned long color); // Set Pixel data in our pointer to the specified color
-  // MAU:  inline void setPixelUnclipped(int x, int y, unsigned long color);
-	
-  // MAU:  void drawLineInt(int x1, int y1, int x2, int y2, unsigned long color); // Draw a line from x1,y1 to x2,y2 in the specified color
-  void display(int x, int y/* MAU:, HWND windowHandle*/); // Copies window pixels from memory pointer to screen.
   void erase(unsigned long color); // Completely fills the bitmap with the specified color
   int getWidth(); // Return the bitmap's width.
   int getHeight(); // Return the bitmap's height.
 
-  // MAU: void drawRect(const Vec2& pos, int width, int height, const Vec3& colour);
-
-  // MAU: HBITMAP getBitmap(){ return scratchPadBitmap; }
-
   unsigned long* getSurface(){ return windowContents; }
 
 protected:
-  /* MAU: HBITMAP scratchPadBitmap; // Temporary Bitmap*/
   unsigned long *windowContents; // Pointer to pixel data to display in the window
   int windowWidth, windowHeight; // Store the window's dimensions
 };
@@ -140,10 +132,4 @@ inline void drawingSurface::setPixel(int x, int y, unsigned long color)
   *(windowContents + (x + (y * windowWidth))) = color;
 }
 
-/* MAU:
-inline void drawingSurface::setPixelUnclipped(int x, int y, unsigned long color)
-{
-  *(windowContents + (x + (y * windowWidth))) = color;
-}
-*/
 #endif //__SIMPLEWIN2D_H__

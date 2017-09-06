@@ -8,6 +8,11 @@ as long as you do not remove this description.
 
 You may *not* use this code for any commercial project.
 =====================================================================*/
+
+// ***
+// *** Port to GNU g++ by Maurizio Palesi <maurizio.palesi@dieei.unict.it>
+// ***
+
 #ifndef __COLOUR_H__
 #define __COLOUR_H__
 
@@ -140,10 +145,6 @@ public:
 			b = 1.0f;
 	}
 
-	/*static inline const Colour randomColour()
-	{
-		return Colour(Random::unit(), Random::unit(), Random::unit());
-	}*/
 
 	const float* toFloatArray() const { return (const float*)this; }
 	const float* data() const { return (const float*)this; }

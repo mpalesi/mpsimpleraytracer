@@ -22,6 +22,11 @@ as long as you do not remove this description.
 
 You may not use this code for any commercial project.
 ====================================================================*/
+
+// ***
+// *** Port to GNU g++ by Maurizio Palesi <maurizio.palesi@dieei.unict.it>
+// ***
+
 #include "object.h"
 
 

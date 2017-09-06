@@ -11,6 +11,11 @@ as long as you do not remove this description.
 
 You may *not* use this code for any commercial project.
 =====================================================================*/
+
+// ***
+// *** Port to GNU g++ by Maurizio Palesi <maurizio.palesi@dieei.unict.it>
+// ***
+
 #ifndef __MATERIAL_H_666_
 #define __MATERIAL_H_666_
 

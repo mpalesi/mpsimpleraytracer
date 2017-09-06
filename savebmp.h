@@ -1,3 +1,6 @@
+// Save to BMP
+// 2017 Maurizio Palesi <maurizio.palesi@dieei.unict.it>
+
 #ifndef __SAVEBMP__
 #define __SAVEBMP__
 

@@ -1,4 +1,5 @@
-// Save to BMP, 2017 Maurizio Palesi 
+// Save to BMP
+// 2017 Maurizio Palesi <maurizio.palesi@dieei.unict.it>
 
 #include <stdio.h>
 #include <stdlib.h>

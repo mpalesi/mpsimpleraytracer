@@ -8,6 +8,11 @@ as long as you do not remove this description.
 
 You may *not* use this code for any commercial project.
 =====================================================================*/
+
+// ***
+// *** Port to GNU g++ by Maurizio Palesi <maurizio.palesi@dieei.unict.it>
+// ***
+
 #ifndef __GRAPHICS2D_H__
 #define __GRAPHICS2D_H__
 
@@ -27,7 +32,6 @@ public:
 	virtual ~Graphics2d(){}
 
 	virtual void startDrawing(){}
-  //	virtual void finishDrawing(){}
 
 	virtual int getWidth() const = 0;
 	virtual int getHeight() const = 0;
@@ -42,40 +46,8 @@ public:
 	{
 		drawPixel(Vec2(xpos, ypos), Vec3((float)r / 255, (float)g / 255, (float)b / 255));
 	}
-  /* MAU:
-	virtual void drawRect(const Vec2& pos, int width, int height, const Vec3& colour)
-	{
-		const int endx = pos.x + width;
-		const float endy = pos.y + height;
-		
-		//-----------------------------------------------------------------
-		//draw vertical lines
-		//-----------------------------------------------------------------
-		for(int x=pos.x; x<endx; x++)
-		{
-			drawLine(Vec2(x, pos.y), Vec2(x, endy), colour);
-		}
-	}
-  */
+
 	virtual void clear(){}//NOTE: FIXME
-
-
-
-
-
-
-	//-----------------------------------------------------------------
-	//draws a clipped line
-	//-----------------------------------------------------------------
-	// MAU: void drawLine(const Vec2& startpos, const Vec2& endpos, const Vec3& colour);
-		
-	//-----------------------------------------------------------------
-	//hook method to draw unclipped line
-	//-----------------------------------------------------------------
-  // MAU:	virtual void doDrawLine(const Vec2& startpos, const Vec2& endpos, const Vec3& colour) = 0;
-
-
-  // MAU:	virtual void drawText(const Vec2& pos, const std::string& text, const Vec3& colour) = 0;
 };
 
 

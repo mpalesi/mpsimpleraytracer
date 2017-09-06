@@ -9,11 +9,13 @@
   You may *not* use this code for any commercial project.
   =====================================================================*/
 
+// ***
+// *** Port to GNU g++ by Maurizio Palesi <maurizio.palesi@dieei.unict.it>
+// ***
+
 #include <math.h>
 #include <time.h>
-//MAU: #include "../simplewin2d/simwin_framework.h"
 #include "simplewin2d.h"
-// #include "../utils/timer.h"
 #include "world.h"
 #include "ray.h"
 #include "colour.h"
@@ -45,15 +47,8 @@ const int height = 400;
 //position of the camera
 const Vec3 campos(-3,0,1);
 
-/* MAU:
-   void getWindowDims(int& width_, int& height_)
-   {
-   width_ = width;
-   height_ = height;
-   }
-*/
 
-void doInit(/* MAU: HINSTANCE hinstance, HWND windowhandle,*/ bitmapWindow& graphics)
+void doInit(bitmapWindow& graphics)
 {
   //------------------------------------------------------------------------
   //create the world
@@ -108,9 +103,6 @@ void doInit(/* MAU: HINSTANCE hinstance, HWND windowhandle,*/ bitmapWindow& grap
   }
 
 
-
-  //world->insertLight(new Light(Vec3(0,0,10), Colour(1, 0, 0) * 100));
-
   light1 = new Light(Vec3(15,0,5), Colour(1, 1, 1) * 100);
 	
   world->insertLight(light1);
@@ -149,13 +141,14 @@ void doMain(bitmapWindow& graphics, float rad)
       //------------------------------------------------------------------------
       //do some gamma correction
       //------------------------------------------------------------------------
-      /*const float exponent = 0.6;
+      /*
+      const float exponent = 0.6;
 	colour.r = pow(colour.r, exponent);
 	colour.g = pow(colour.g, exponent);
 	colour.b = pow(colour.b, exponent);
 
-	colour *= 0.5;*/
-
+	colour *= 0.5;
+      */
       //------------------------------------------------------------------------
       //make sure no components exceed 1
       //------------------------------------------------------------------------
@@ -196,15 +189,6 @@ int main()
 
   graphics->startDrawing();
 
-  /*
-  char fname[16];
-  for (int g=0; g<360; g+=10)
-  {
-    doMain(*graphics, (float)g*M_PI/360);
-    sprintf(fname, "img_%03d.bmp", g);
-    graphics->saveBMP(fname);
-  }
-  */
 
   doMain(*graphics, 0);
   graphics->saveBMP((char *)"img.bmp");
